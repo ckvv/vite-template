@@ -5,7 +5,7 @@
     "dev": "yarn lint && vite",
     "build": "yarn lint && vite build",
     "serve": "yarn lint && vite preview",
-    "lint": "eslint --fix ./src"
+    "lint": "eslint --fix ./"
   },
   "dependencies": {
     "element-plus": "^1.0.2-beta.44",
@@ -20,7 +20,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-vue": "^7.9.0",
-    "sass": "^1.34.0",
+    "sass": "1.32.0",
     "vite": "^2.3.4",
     "vite-plugin-style-import": "^0.10.1"
   }
