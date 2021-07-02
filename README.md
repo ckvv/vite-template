@@ -1,6 +1,11 @@
 # vite-element-template
 
-Vite + VueRouter + ElementPlus + Eslint + Commitlint  Template
++ Vite
++ VueRouter
++ ElementPlus
++ Naive UI
++ Eslint
++ Commitlint
 
 # Getting Started 
 
