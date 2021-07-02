@@ -10,6 +10,7 @@
   </p>
 
   <el-button @click="state.count++" type="primary">count is: {{ state.count }}</el-button>
+  <n-button @click="state.count++" type="primary">count is: {{ state.count }}</n-button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
