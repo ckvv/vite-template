@@ -5,7 +5,8 @@
     "dev": "yarn lint && vite",
     "build": "yarn lint && vite build",
     "serve": "yarn lint && vite preview",
-    "lint": "eslint --fix ./"
+    "lint": "eslint --fix ./",
+    "husky": "husky install"
   },
   "dependencies": {
     "element-plus": "^1.0.2-beta.44",
@@ -15,7 +16,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-angular": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.5",

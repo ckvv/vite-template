@@ -58,17 +58,12 @@
     resolve-global "1.0.0"
     yargs "^16.2.0"
 
-"@commitlint/config-angular-type-enum@^12.1.4":
+"@commitlint/config-conventional@^12.1.4":
   version "12.1.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-angular-type-enum/-/config-angular-type-enum-12.1.4.tgz#02f9fd83cb13d1b40b0b2308147059ee0eae1ab5"
-  integrity sha512-C/F4X0VN56qpVq4HqiY2DuynF3BLtIFxM8Zwf3xvSONHGYVqmYG1cM6qezMxKtTIuy7A5yKK5aeSnaptw+VQgw==
-
-"@commitlint/config-angular@^12.1.4":
-  version "12.1.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-angular/-/config-angular-12.1.4.tgz#960e394994052201c4ded34713092ec4ea44ce97"
-  integrity sha512-ptJpRjsHe0Cmh6Bm5tnC/RbR9p3/YMsZFhOzLEiv1sn2pBPsTSGIka1eO26XquLcw/0srKCGBNnUFFLO84qGPQ==
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-12.1.4.tgz#95bbab622f117a8a3e49f95917b08655040c66a8"
+  integrity sha512-ZIdzmdy4o4WyqywMEpprRCrehjCSQrHkaRTVZV411GyLigFQHlEBSJITAihLAWe88Qy/8SyoIe5uKvAsV5vRqQ==
   dependencies:
-    "@commitlint/config-angular-type-enum" "^12.1.4"
+    conventional-changelog-conventionalcommits "^4.3.1"
 
 "@commitlint/ensure@^12.1.4":
   version "12.1.4"
@@ -1465,6 +1460,15 @@ conventional-changelog-angular@^5.0.11:
   integrity sha512-5GLsbnkR/7A89RyHLvvoExbiGbd9xKdKqDTrArnPbOqBqG/2wIosu0fHwpeIRI8Tl94MhVNBXcLJZl92ZQ5USw==
   dependencies:
     compare-func "^2.0.0"
+    q "^1.5.1"
+
+conventional-changelog-conventionalcommits@^4.3.1:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-conventionalcommits/-/conventional-changelog-conventionalcommits-4.6.0.tgz#7fc17211dbca160acf24687bd2fdd5fd767750eb"
+  integrity sha512-sj9tj3z5cnHaSJCYObA9nISf7eq/YjscLPoq6nmew4SiOjxqL2KRpK20fjnjVbpNDjJ2HR3MoVcWKXwbVvzS0A==
+  dependencies:
+    compare-func "^2.0.0"
+    lodash "^4.17.15"
     q "^1.5.1"
 
 conventional-commits-parser@^3.0.0:
