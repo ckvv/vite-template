@@ -29,6 +29,7 @@
 
 <script>
 import { RULES } from '@/utils/rules';
+import { setToken } from '@/utils/util';
 
 const TYPE = {
   signup: 'signup',
@@ -46,7 +47,7 @@ export default {
     return {
       type: TYPE.signin,
       user: {
-        username: '',
+        username: window.localStorage.getItem('username') || '',
         password: '',
         checkPassword: '',
       },
@@ -61,9 +62,14 @@ export default {
     },
     async signIn() {
       if (await this.checkForm()) {
-        const res = await this.$api.user.signIn();
+        window.localStorage.setItem('username', this.user.username);
+        const res = await this.$api.sign.signIn({
+          username: this.user.username,
+          password: this.user.password,
+        });
         if (this.checkRes(res)) {
-          window.location.reload();
+          setToken(res.data.data.token);
+          window.location.href = '';
         } else {
           this.$error('登录失败');
         }
@@ -71,7 +77,10 @@ export default {
     },
     async signUp() {
       if (await this.checkForm()) {
-        const res = await this.$api.user.signUp();
+        const res = await this.$api.sign.signUp({
+          username: this.user.username,
+          password: this.user.password,
+        });
         if (this.checkRes(res)) {
           this.toSignIn();
         } else {

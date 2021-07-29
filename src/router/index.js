@@ -3,14 +3,15 @@ import Home from '@/views/Home.vue';
 import Sign from '@/views/Sign.vue';
 import { ROLE } from '@/constant';
 
-const USER = [ROLE.USER];
 const ADMIN = [ROLE.ADMIN];
+const ALL = [ROLE.USER, ROLE.ADMIN];
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
+    meta: { role: ALL },
   },
   {
     path: '/sign',
@@ -23,7 +24,7 @@ const routes = [
     component() {
       return import(/* webpackChunkName: "about" */ '../views/User.vue');
     },
-    meta: { role: USER },
+    meta: { role: ALL },
   },
   {
     path: '/admin',
@@ -42,29 +43,22 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const userInfo = router.$user;
-
   if (to.name !== 'Sign' && !userInfo) {
-    return next({
+    next({
       name: 'Sign',
     });
   }
-
   if (userInfo) {
-    if (to.name === 'Sign') {
-      return router.push({
-        path: userInfo.role === ADMIN ? '/admin' : '/user',
-      });
-    }
     const { meta } = to;
     if (meta && meta.role) {
       if (meta.role.indexOf(userInfo.role) === -1) {
-        return router.push({
+        router.push({
           name: 'Sign',
         });
       }
     }
   }
-  return next();
+  next();
 });
 
 export default router;

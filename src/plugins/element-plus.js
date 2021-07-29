@@ -17,7 +17,6 @@ const components = [
 ];
 
 function notify(type, message, options) {
-  console.log(message, options);
   return ElNotification({
     type,
     message,

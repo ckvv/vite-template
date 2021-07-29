@@ -1,6 +1,6 @@
 import instance from '@/api/instance.js';
 
-const user = {
+const sign = {
   signUp(params) {
     return instance.post('/sign/signup', params);
   },
@@ -10,8 +10,15 @@ const user = {
   signOut() {
     return instance.get('/sign/signout');
   },
+
+};
+
+const user = {
   info() {
-    return instance.get('/sign/info');
+    return instance.get('/user/info');
+  },
+  list(params) {
+    return instance.get('/user/list', { params });
   },
 };
 
@@ -22,6 +29,7 @@ const log = {
 };
 
 export default {
+  sign,
   user,
   log,
 };
