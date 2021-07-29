@@ -1,12 +1,24 @@
 import { createApp } from 'vue';
-import pluginElementPlus from '@/plugins/element-plus';
-import pluginNaiveUi from '@/plugins/naive-ui';
+
+import plugins from '@/plugins';
 import App from '@/App.vue';
 import router from '@/router';
+import api from '@/api';
+import { checkRes } from '@/utils/util';
 
-const app = createApp(App);
+async function getUserInfo() {
+  const userRes = await api.user.info();
+  return checkRes(userRes) ? userRes.data.data : null;
+}
 
-app.use(pluginElementPlus);
-app.use(pluginNaiveUi);
-app.use(router);
-app.mount('#app');
+(async () => {
+  const userInfo = await getUserInfo();
+  router.$user = userInfo;
+
+  const app = createApp(App);
+
+  app.use(plugins);
+  app.use(router);
+
+  app.mount('#app');
+})();

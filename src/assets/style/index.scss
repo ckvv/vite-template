@@ -1,0 +1,30 @@
+@import "./variable.scss";
+@import "./mixin.scss";
+
+* {
+  box-sizing: border-box;
+  :focus{
+    outline: none;
+  }
+}
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+html,
+body {
+  font-family: system-ui;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
