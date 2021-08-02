@@ -22,7 +22,7 @@ const routes = [
     path: '/user',
     name: 'User',
     component() {
-      return import(/* webpackChunkName: "about" */ '../views/User.vue');
+      return import(/* webpackChunkName: "User" */ '../views/User.vue');
     },
     meta: { role: ALL },
   },
@@ -30,7 +30,7 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component() {
-      return import(/* webpackChunkName: "about" */ '../views/Admin.vue');
+      return import(/* webpackChunkName: "Admin" */ '../views/Admin.vue');
     },
     meta: { role: ADMIN },
   },

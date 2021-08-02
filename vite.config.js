@@ -2,6 +2,8 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import styleImport from 'vite-plugin-style-import';
+import { visualizer } from 'rollup-plugin-visualizer';
+import PACKAGE from './package.json';
 
 const elPlugin = styleImport({
   libs: [{
@@ -12,6 +14,19 @@ const elPlugin = styleImport({
     resolveComponent: (name) => `element-plus/lib/${name}`,
   }],
 });
+
+const visualizerPlugin = visualizer({
+  name: `${PACKAGE.name}-report`,
+  template: 'treemap',
+  filename: 'report/report.html',
+  gzipSize: true,
+});
+visualizerPlugin.outputOptions = () => {
+  console.info(`\nReport: file://${__dirname}/report/report.html\n`);
+};
+
+const plugins = [vue(), elPlugin, visualizerPlugin];
+
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
@@ -24,7 +39,7 @@ export default defineConfig({
       },
     },
   },
-  plugins: [vue(), elPlugin],
+  plugins,
   // @开头的路径，会导致vscode 无法语法提示,需配合jsconfig.json使用
   // 参考: https://code.visualstudio.com/docs/languages/jsconfig
   resolve: {
