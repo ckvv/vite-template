@@ -4,7 +4,6 @@ import {
   ElForm,
   ElFormItem,
   ElNotification,
-  ElIcon,
 } from 'element-plus';
 import 'element-plus/packages/theme-chalk/src/base.scss';
 
@@ -13,7 +12,6 @@ const components = [
   ElInput,
   ElForm,
   ElFormItem,
-  ElIcon,
 ];
 
 function notify(type, message, options) {
