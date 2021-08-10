@@ -10,9 +10,13 @@ function getToken() {
   return window.localStorage.getItem('token');
 }
 
-function signOut() {
+/**
+ * 退出登录
+ * @param {string} href 地址
+ */
+function signOut(href = '') {
   window.localStorage.removeItem('token');
-  window.location.href = '';
+  window.location.href = href;
 }
 
 export {
