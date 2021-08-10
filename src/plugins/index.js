@@ -1,6 +1,6 @@
-import ElementPlus from '@/plugins/element-plus.js';
-import NaiveUi from '@/plugins/naive-ui.js';
-import GlobalProperties from '@/plugins/global-properties.js';
+import ElementPlus from '@/plugins/element-plus';
+import NaiveUi from '@/plugins/naive-ui';
+import GlobalProperties from '@/plugins/global-properties';
 
 export default {
   install(app) {

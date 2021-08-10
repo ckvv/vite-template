@@ -12,22 +12,20 @@ module.exports = {
     'max-len': ['error', { code: 200 }],
     'no-console': 0,
     'no-param-reassign': 0,
-    'import/no-unresolved': 0,
-    'import/prefer-default-export': 0,
-    'import/no-extraneous-dependencies': 0,
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'always',
-        vue: 'always',
-        json: 'always',
-      },
-    ],
   },
   overrides: [
     {
       files: ['*.js', '*.vue'],
     },
   ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+        ],
+      },
+      extensions: ['.js', '.less', '.json', '.vue'],
+    },
+  },
 };
