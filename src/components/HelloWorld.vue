@@ -20,7 +20,7 @@
 
 <script>
 import { reactive } from 'vue';
-import { signOut } from '@/utils/util';
+import { signOut } from '@/utils/helpers';
 
 export default {
   setup() {

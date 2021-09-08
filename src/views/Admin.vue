@@ -7,6 +7,9 @@
 </template>
 
 <script>
+import { userAPI } from '@/api';
+import { checkRes } from '@/utils/helpers';
+
 export default {
   data() {
     return {
@@ -18,8 +21,8 @@ export default {
   },
   methods: {
     async getUserList() {
-      const users = await this.$api.user.list();
-      if (this.checkRes(users)) {
+      const users = await userAPI.list();
+      if (checkRes(users)) {
         this.users = users.data.data;
       } else {
         this.$error('获取用户列表失败');

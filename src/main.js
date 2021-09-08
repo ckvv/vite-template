@@ -4,7 +4,7 @@ import plugins from '@/plugins';
 import App from '@/App.vue';
 import router from '@/router';
 import api from '@/api';
-import { checkRes } from '@/utils/util';
+import { checkRes } from '@/utils/helpers';
 
 async function getUserInfo() {
   const userRes = await api.user.info();

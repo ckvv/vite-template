@@ -28,8 +28,8 @@ const log = {
   },
 };
 
-export default {
-  sign,
-  user,
-  log,
+export {
+  sign as signAPI,
+  user as userAPI,
+  log as logAPI,
 };

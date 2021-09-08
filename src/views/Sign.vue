@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { signAPI } from '@/api';
+import { checkRes, checkForm } from '@/utils/helpers';
 import { RULES } from '@/utils/rules';
 import { setToken } from '@/utils/util';
 
@@ -61,13 +63,13 @@ export default {
       this.type = TYPE.signin;
     },
     async signIn() {
-      if (await this.checkForm()) {
+      if (await checkForm()) {
         window.localStorage.setItem('username', this.user.username);
-        const res = await this.$api.sign.signIn({
+        const res = await signAPI.signIn({
           username: this.user.username,
           password: this.user.password,
         });
-        if (this.checkRes(res)) {
+        if (checkRes(res)) {
           setToken(res.data.data.token);
           window.location.href = '';
         } else {
@@ -76,12 +78,12 @@ export default {
       }
     },
     async signUp() {
-      if (await this.checkForm()) {
-        const res = await this.$api.sign.signUp({
+      if (await checkForm()) {
+        const res = await signAPI.signUp({
           username: this.user.username,
           password: this.user.password,
         });
-        if (this.checkRes(res)) {
+        if (checkRes(res)) {
           this.toSignIn();
         } else {
           this.$error('注册失败');
