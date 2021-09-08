@@ -1,12 +1,12 @@
 {
   "name": "vite-template",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "yarn lint && vite build",
     "serve": "yarn lint && vite preview",
     "lint": "eslint --fix ./",
-    "husky": "husky install",
+    "prepare": "husky install",
     "release": "standard-version"
   },
   "dependencies": {
