@@ -1,6 +1,6 @@
 {
   "name": "vite-template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -38,6 +38,8 @@
     "sass": "1.38.2"
   },
   "lint-staged": {
-    "*.{js,jsx,vue}":[ "eslint --fix"]
+    "*.{js,jsx,vue}": [
+      "eslint --fix"
+    ]
   }
 }
