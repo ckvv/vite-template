@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "build": "yarn lint && vite build",
-    "serve": "yarn lint && vite preview",
+    "build": "vite build",
+    "serve": "vite preview",
     "lint": "eslint --fix ./",
     "prepare": "husky install",
     "release": "standard-version"
@@ -34,6 +34,10 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-vue": "^7.17.0",
     "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
     "sass": "1.38.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}":[ "eslint --fix"]
   }
 }
