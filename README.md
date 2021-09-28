@@ -34,6 +34,6 @@ yarn serve
 
 可以配合其他相关项目使用
 
-[vite-template](https://github.com/chenkai0520/vite-template)
-[koa-sequelize-template](https://github.com/chenkai0520/koa-sequelize-template)
-[koa-prisma-template](https://github.com/chenkai0520/koa-prisma-template)
+[vite-template](https://github.com/ckvv/vite-template)
+[koa-sequelize-template](https://github.com/ckvv/koa-sequelize-template)
+[koa-prisma-template](https://github.com/ckvv/koa-prisma-template)
