@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/ckvv/vite-template/compare/v0.0.3...v0.0.4) (2021-11-01)
+
+
+### Bug Fixes
+
+* git url error ([8e96e31](https://github.com/ckvv/vite-template/commit/8e96e31dd3c8436e5ec092e4e3fae78a8107ae98))
+
 ### [0.0.3](https://github.com/ckvv/vite-template/compare/v0.0.2...v0.0.3) (2021-11-01)
 
 
