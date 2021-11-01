@@ -7,6 +7,7 @@ module.exports = {
   plugins: ['vue'],
   rules: {
     'vue/script-setup-uses-vars': 0,
+    'vue/multi-word-component-names': 0,
     'prefer-rest-params': 0,
     'consistent-return': 0,
     'max-len': ['error', { code: 2000 }],

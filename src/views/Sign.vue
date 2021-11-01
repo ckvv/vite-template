@@ -63,7 +63,7 @@ export default {
       this.type = TYPE.signin;
     },
     async signIn() {
-      if (await checkForm()) {
+      if (await checkForm.call(this)) {
         window.localStorage.setItem('username', this.user.username);
         const res = await signAPI.signIn({
           username: this.user.username,

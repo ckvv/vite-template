@@ -11,6 +11,7 @@ async function checkForm(form = 'form') {
     });
   });
 }
+
 function resetForm(form = 'form') {
   this.$nextTick(() => {
     this.$refs[form].resetFields();

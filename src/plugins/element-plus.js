@@ -2,16 +2,14 @@ import {
   ElButton,
   ElInput,
   ElForm,
-  ElFormItem,
   ElNotification,
 } from 'element-plus';
-import 'element-plus/packages/theme-chalk/src/base.scss';
+import 'element-plus/dist/index.css';
 
 const components = [
   ElButton,
   ElInput,
   ElForm,
-  ElFormItem,
 ];
 
 function notify(type, message, options) {
