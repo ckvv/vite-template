@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/chenkai0520/vite-element-template/compare/v0.0.2...v0.0.3) (2021-11-01)
+
+
+### Features
+
+* 升级依赖 ([9f1c2d3](https://github.com/chenkai0520/vite-element-template/commit/9f1c2d3d57e6cb1194a493979f85eb0b3896d6b2))
+
+
+### Bug Fixes
+
+* update username ([f0043dd](https://github.com/chenkai0520/vite-element-template/commit/f0043dd6da83b23afa368506f136bc0ab9660bfb))
+
 ### [0.0.2](https://github.com/ckvv/vite-element-template/compare/v0.0.1...v0.0.2) (2021-09-09)
 
 
