@@ -40,5 +40,9 @@
     "*.{js,jsx,vue}": [
       "eslint --fix"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ckvv/vite-template"
   }
 }
