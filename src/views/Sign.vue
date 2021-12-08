@@ -78,7 +78,7 @@ export default {
       }
     },
     async signUp() {
-      if (await checkForm()) {
+      if (await checkForm.call(this)) {
         const res = await signAPI.signUp({
           username: this.user.username,
           password: this.user.password,
