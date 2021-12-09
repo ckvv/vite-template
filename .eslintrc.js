@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: ['vue'],
   rules: {
+    'import/prefer-default-export': 'off',
     'vue/script-setup-uses-vars': 0,
     'vue/multi-word-component-names': 0,
     'prefer-rest-params': 0,
