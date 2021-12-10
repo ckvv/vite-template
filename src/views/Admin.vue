@@ -1,33 +1,37 @@
 <template>
   <div class="admin">
     <h1>This is an admin page</h1>
-    <div>{{users}}</div>
+    <div>{{user}}</div>
     <router-link to="/">Return Home</router-link>
   </div>
 </template>
 
 <script>
+import { reactive, toRefs } from 'vue';
 import { userAPI } from '@/api';
 import { checkRes } from '@/utils/helpers';
+import { error } from '@/plugins/element-plus';
 
 export default {
-  data() {
-    return {
+  async setup() {
+    const state = reactive({
       users: [],
-    };
-  },
-  created() {
-    this.getUserList();
-  },
-  methods: {
-    async getUserList() {
+    });
+
+    async function getUserList() {
       const users = await userAPI.list();
       if (checkRes(users)) {
-        this.users = users.data.data;
-      } else {
-        this.$error('获取用户列表失败');
+        return users.data.data;
       }
-    },
+      error('获取用户列表失败');
+      return null;
+    }
+
+    state.users = await getUserList();
+    const { users } = toRefs(state);
+    return {
+      users,
+    };
   },
 };
 </script>

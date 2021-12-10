@@ -19,10 +19,10 @@ const routes = [
     component: Sign,
   },
   {
-    path: '/user',
-    name: 'User',
+    path: '/chat',
+    name: 'Chat',
     component() {
-      return import(/* webpackChunkName: "User" */ '../views/User.vue');
+      return import(/* webpackChunkName: "User" */ '../views/Chat.vue');
     },
     meta: { role: ALL },
   },

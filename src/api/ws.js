@@ -9,10 +9,6 @@ const reconnect = async () => new Promise((resolve, reject) => {
   ws = new WebSocket('ws://localhost:8001', [getToken()]);
   ws.onopen = () => {
     console.log('ws: open');
-    ws.send(JSON.stringify({
-      type: '',
-      data: getToken(),
-    }));
     resolve();
   };
 
@@ -42,7 +38,7 @@ const send = async (data) => {
   if (!ws || ws.readyState !== ws.OPEN) {
     await reconnect();
   }
-  ws.send(data);
+  ws.send(JSON.stringify(data));
 };
 
 window.onbeforeunload = () => {
