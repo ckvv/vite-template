@@ -11,6 +11,7 @@
 + `eslint`: 检查语法规则和代码风格
 + `commitlint` & `husky`: 检查commit提交的信息
 + `rollup-plugin-visualizer`: 生成 report.html 以帮助分析包内容
++ `tailwindcss`: 以配置好tailwindcss的方式，自动生成样式文件
 
 # Getting Started 
 

@@ -1,7 +1,7 @@
 <template>
   <div class="sign">
     <div class="sign-content">
-      <div class="sign-title">
+      <div class="sign-title text-gray-800">
         vite-element-template
       </div>
       <el-form :hide-required-asterisk="true" label-position="left" class="sign-form" ref="form" :model="user" label-width="70px">

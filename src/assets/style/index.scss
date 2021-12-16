@@ -1,10 +1,15 @@
 @import "./variable.scss";
 @import "./mixin.scss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 * {
   box-sizing: border-box;
   :focus{
-    outline: none;
+    @apply outline-none;
   }
 }
 .icon {
