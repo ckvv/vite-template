@@ -5,6 +5,7 @@ import App from '@/App.vue';
 import router from '@/router';
 import { userAPI } from '@/api';
 import { checkRes } from '@/utils/helpers';
+import '@/assets/style/index.scss';
 
 async function getUserInfo() {
   const userRes = await userAPI.info();

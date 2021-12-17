@@ -1,5 +1,5 @@
-@import "./variable.scss";
-@import "./mixin.scss";
+@use "./variable.scss";
+@use "./mixin.scss";
 
 @tailwind base;
 @tailwind components;
