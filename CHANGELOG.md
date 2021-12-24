@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/ckvv/vite-template/compare/v0.0.4...v0.0.5) (2021-12-24)
+
+
+### Features
+
+* add build:visualizer script ([6caa85d](https://github.com/ckvv/vite-template/commit/6caa85d6dd221cf45ed04d3ebeb8658271bccb3d))
+* add tailwindcss ([8a70a96](https://github.com/ckvv/vite-template/commit/8a70a96c3174ca70829a437811f0173569f7b209))
+* add websocket ([1e0bd43](https://github.com/ckvv/vite-template/commit/1e0bd43ccd0ddde0af8bb6cbc4924041fb311104))
+* add windicss ([c3cf5ae](https://github.com/ckvv/vite-template/commit/c3cf5aed28d758f0a4b205d8cbc2703ff0fc8d24))
+
+
+### Bug Fixes
+
+* 升级依赖 ([fc47034](https://github.com/ckvv/vite-template/commit/fc470340c71d8da2fc10a48126fd92ff732309db))
+* 优化权限路由 ([cbb2e61](https://github.com/ckvv/vite-template/commit/cbb2e6174d4806854c43397a7bcfb1770b51d346))
+* add index.css ([3560a75](https://github.com/ckvv/vite-template/commit/3560a7590729c58a4ac2f0cecf11e438fc0a5bd3))
+* checkForm error ([e97871c](https://github.com/ckvv/vite-template/commit/e97871cd7c8b5c3e70f9a1714646b0a7c446d0d2))
+* del naive-ui ([c54f1a8](https://github.com/ckvv/vite-template/commit/c54f1a85e35af94a56d6fdb5ca536daaf3769997))
+* update package ([5a98913](https://github.com/ckvv/vite-template/commit/5a9891337a58b2c6a4b9e96fa7e447a407ad3fdd))
+
 ### [0.0.4](https://github.com/ckvv/vite-template/compare/v0.0.3...v0.0.4) (2021-11-01)
 
 
