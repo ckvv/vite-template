@@ -1,0 +1,21 @@
+
+
+* {
+  @apply outline-none box-border;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  @apply fill-current overflow-hidden;
+}
+
+html,
+body {
+  font-family: system-ui;
+  @apply w-full h-full m-0 p-0 text-base;
+}
+
+#app {
+  @apply w-full h-full;
+}
