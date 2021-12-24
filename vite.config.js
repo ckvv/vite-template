@@ -1,7 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import WindiCSS from 'vite-plugin-windicss';
 import { visualizer } from 'rollup-plugin-visualizer';
 import PACKAGE from './package.json';
