@@ -1,6 +1,8 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import WindiCSS from 'vite-plugin-windicss';
 import { visualizer } from 'rollup-plugin-visualizer';
 import PACKAGE from './package.json';
 
@@ -14,19 +16,12 @@ visualizerPlugin.outputOptions = () => {
   console.info(`\nReport: file://${__dirname}/report/report.html\n`);
 };
 
-const plugins = [vue(), visualizerPlugin];
+const plugins = [WindiCSS(), vue(), visualizerPlugin];
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
     port: 8000,
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: '@use "@/assets/style/mixin.scss" as *;\n@use "@/assets/style/variable.scss" as *;',
-      },
-    },
   },
   plugins,
   // @开头的路径，会导致vscode 无法语法提示,需配合jsconfig.json使用

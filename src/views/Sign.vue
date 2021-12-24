@@ -1,10 +1,10 @@
 <template>
-  <div class="sign">
-    <div class="sign-content">
-      <div class="sign-title text-gray-800">
+  <div class="sign flex flex-col justify-center items-center h-full">
+    <div class="md:p-16 md:shadow">
+      <div class="text-center text-4xl">
         vite-element-template
       </div>
-      <el-form :hide-required-asterisk="true" label-position="left" class="sign-form" ref="form" :model="user" label-width="70px">
+      <el-form  class="my-8" :hide-required-asterisk="true" label-position="left" ref="form" :model="user" label-width="70px">
         <el-form-item prop="username" label="用户名" :rules="[RULES.username]">
           <el-input v-model="user.username"></el-input>
         </el-form-item>
@@ -15,13 +15,15 @@
           <el-input v-model="user.checkPassword"></el-input>
         </el-form-item>
       </el-form>
-      <div class="sign-operate" v-if="type === TYPE.signin">
-        <el-button type="primary" @click="signIn">登录</el-button>
-        <el-button @click="toSignUp">注册</el-button>
-      </div>
-      <div class="sign-operate" v-if="type === TYPE.signup">
-        <el-button type="primary" @click="signUp">注册</el-button>
-        <el-button @click="toSignIn">返回登录</el-button>
+      <div class="flex flex-col">
+        <template v-if="type === TYPE.signin">
+          <el-button class="sign-btn" type="primary" @click="signIn">登录</el-button>
+          <el-button class="sign-btn" @click="toSignUp">注册</el-button>
+        </template>
+        <template v-if="type === TYPE.signup">
+          <el-button class="sign-btn" type="primary" @click="signUp">注册</el-button>
+          <el-button class="sign-btn" @click="toSignIn">返回登录</el-button>
+        </template>
       </div>
     </div>
   </div>
@@ -94,32 +96,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
-  .sign {
-    flex-direction: column;
-    @include fill-center;
-
-    .sign-content {
-      @media screen and (min-width: $xs-screen) {
-        padding: 4rem;
-        @include box-shadow;
-      }
-      .sign-title {
-        font-size: 2rem;
-        text-align: center;
-      }
-      .sign-form {
-        margin: 2rem 0;
-      }
-      .sign-operate {
-        display: flex;
-        flex-direction: column;
-        .el-button {
-          width: 100%;
-          margin: .5rem 0;
-        }
-      }
-    }
-  }
+<style scoped>
+.sign-btn {
+  @apply w-full my-2 !mx-0;
+}
 </style>

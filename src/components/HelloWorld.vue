@@ -1,5 +1,5 @@
 <template>
-  <div class="hello-world">
+  <div class="hello-world text-center">
     <div>
       Hello: {{username}}
     </div>
@@ -42,9 +42,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-  .hello-world {
-    text-align: center;
-  }
-</style>

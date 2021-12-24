@@ -1,11 +1,12 @@
+/* eslint-disable */
 import { createApp } from 'vue';
-
 import plugins from '@/plugins';
 import App from '@/App.vue';
 import router from '@/router';
 import { userAPI } from '@/api';
 import { checkRes } from '@/utils/helpers';
-import '@/assets/style/index.scss';
+import '@/assets/style/index.css';
+import 'virtual:windi.css';
 
 async function getUserInfo() {
   const userRes = await userAPI.info();
