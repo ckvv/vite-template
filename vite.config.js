@@ -6,18 +6,20 @@ import WindiCSS from 'vite-plugin-windicss';
 import { visualizer } from 'rollup-plugin-visualizer';
 import PACKAGE from './package.json';
 
-const visualizerPlugin = visualizer({
-  name: `${PACKAGE.name}-report`,
-  template: 'treemap',
-  filename: 'report/report.html',
-  gzipSize: true,
-});
-visualizerPlugin.outputOptions = () => {
-  console.info(`\nReport: file://${__dirname}/report/report.html\n`);
-};
+const plugins = [WindiCSS(), vue()];
 
-const plugins = [WindiCSS(), vue(), visualizerPlugin];
-
+if (process.env.visualizer) {
+  const visualizerPlugin = visualizer({
+    name: `${PACKAGE.name}-report`,
+    template: 'treemap',
+    filename: 'report/index.html',
+    gzipSize: true,
+  });
+  visualizerPlugin.outputOptions = () => {
+    console.info(`\nReport: file://${path.resolve()}/report/index.html\n`);
+  };
+  plugins.push(visualizerPlugin);
+}
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
