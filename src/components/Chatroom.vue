@@ -1,7 +1,7 @@
 <template>
   <div class="chatroom">
     {{ chat }}
-    <el-input v-model="chat"></el-input>
+    <el-input v-model="chat" />
   </div>
 </template>
 

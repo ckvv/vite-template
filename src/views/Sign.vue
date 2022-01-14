@@ -4,25 +4,67 @@
       <div class="text-center text-4xl">
         vite-element-template
       </div>
-      <el-form  class="my-8" :hide-required-asterisk="true" label-position="left" ref="form" :model="user" label-width="70px">
-        <el-form-item prop="username" label="用户名" :rules="[RULES.username]">
-          <el-input v-model="user.username"></el-input>
+      <el-form
+        ref="form"
+        class="my-8"
+        :hide-required-asterisk="true"
+        label-position="left"
+        :model="user"
+        label-width="70px"
+      >
+        <el-form-item
+          prop="username"
+          label="用户名"
+          :rules="[RULES.username]"
+        >
+          <el-input v-model="user.username" />
         </el-form-item>
-        <el-form-item prop="password" label="密码" :rules="[RULES.password]">
-          <el-input v-model="user.password"></el-input>
+        <el-form-item
+          prop="password"
+          label="密码"
+          :rules="[RULES.password]"
+        >
+          <el-input v-model="user.password" />
         </el-form-item>
-        <el-form-item prop="checkPassword" v-if="type === TYPE.signup" label="确认密码" :rules="[{...RULES.checkPassword, password: user.password }]">
-          <el-input v-model="user.checkPassword"></el-input>
+        <el-form-item
+          v-if="type === TYPE.signup"
+          prop="checkPassword"
+          label="确认密码"
+          :rules="[{...RULES.checkPassword, password: user.password }]"
+        >
+          <el-input v-model="user.checkPassword" />
         </el-form-item>
       </el-form>
       <div class="flex flex-col">
         <template v-if="type === TYPE.signin">
-          <el-button class="sign-btn" type="primary" @click="signIn">登录</el-button>
-          <el-button class="sign-btn" @click="toSignUp">注册</el-button>
+          <el-button
+            class="sign-btn"
+            type="primary"
+            @click="signIn"
+          >
+            登录
+          </el-button>
+          <el-button
+            class="sign-btn"
+            @click="toSignUp"
+          >
+            注册
+          </el-button>
         </template>
         <template v-if="type === TYPE.signup">
-          <el-button class="sign-btn" type="primary" @click="signUp">注册</el-button>
-          <el-button class="sign-btn" @click="toSignIn">返回登录</el-button>
+          <el-button
+            class="sign-btn"
+            type="primary"
+            @click="signUp"
+          >
+            注册
+          </el-button>
+          <el-button
+            class="sign-btn"
+            @click="toSignIn"
+          >
+            返回登录
+          </el-button>
         </template>
       </div>
     </div>

@@ -1,45 +1,44 @@
 {
   "name": "vite-template",
   "version": "0.0.5",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build:visualizer": "visualizer=true vite build",
     "serve": "vite preview",
-    "lint": "eslint --fix ./",
+    "lint": "eslint --fix --ext js,mjs,cjs,jsx,vue ./",
     "prepare": "husky install",
     "release": "standard-version"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^2.0.1",
     "axios": "^0.24.0",
-    "element-plus": "^1.2.0-beta.6",
+    "element-plus": "^1.3.0-beta.5",
     "mitt": "^3.0.0",
-    "naive-ui": "^2.23.1",
-    "qs": "^6.10.2",
-    "vite": "^2.7.6",
+    "naive-ui": "^2.24.1",
+    "qs": "^6.10.3",
     "vue": "^3.2.26",
     "vue-router": "4.0.12"
   },
   "devDependencies": {
     "rollup-plugin-visualizer": "^5.5.2",
-    "@commitlint/cli": "^15.0.0",
-    "@commitlint/config-conventional": "^15.0.0",
-    "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/compiler-sfc": "^3.2.26",
-    "eslint": "^8.5.0",
+    "@commitlint/cli": "^16.0.2",
+    "@commitlint/config-conventional": "^16.0.0",
+    "eslint": "^8.6.0",
+    "eslint-plugin-vue": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-vue": "^8.2.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.3",
+    "lint-staged": "^12.1.7",
     "standard-version": "^9.3.2",
-    "vite-plugin-windicss": "^1.6.1",
-    "windicss": "^3.4.0"
+    "vite": "^2.7.12",
+    "@vitejs/plugin-vue": "^2.0.1",
+    "vite-plugin-windicss": "^1.6.2",
+    "windicss": "^3.4.2"
   },
   "lint-staged": {
-    "*.{js,jsx,vue}": [
+    "*.{js,cjs,mjs,jsx,vue}": [
       "eslint --fix"
     ]
   },

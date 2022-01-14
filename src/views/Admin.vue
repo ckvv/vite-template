@@ -1,8 +1,10 @@
 <template>
   <div class="admin">
     <h1>This is an admin page</h1>
-    <div>{{user}}</div>
-    <router-link to="/">Return Home</router-link>
+    <div>{{ user }}</div>
+    <router-link to="/">
+      Return Home
+    </router-link>
   </div>
 </template>
 
