@@ -3,6 +3,7 @@ import {
   ElInput,
   ElForm,
   ElNotification,
+  makeInstaller,
 } from 'element-plus';
 import 'element-plus/dist/index.css';
 
@@ -25,14 +26,11 @@ export const error = (message, options) => notify('error', message, options);
 
 export default {
   install(app) {
-    app.config.globalProperties.$ELEMENT = {
-      size: 'small',
-    };
     app.config.globalProperties.$success = success;
     app.config.globalProperties.$error = error;
 
-    components.forEach((component) => {
-      app.use(component);
+    app.use(makeInstaller(components), {
+      size: 'default',
     });
   },
 };
