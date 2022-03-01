@@ -6,17 +6,17 @@ function validateRefs(refs) {
   return errors.length ? errors : null;
 }
 
-async function checkForm(form = 'form') {
+async function checkForm(form) {
   return new Promise((res) => {
-    this.$refs[form].validate((valid) => {
+    form.validate((valid) => {
       res(valid);
     });
   });
 }
 
-function resetForm(form = 'form') {
+function resetForm(form) {
   this.$nextTick(() => {
-    this.$refs[form].resetFields();
+    form.resetFields();
   });
 }
 

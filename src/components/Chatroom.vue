@@ -5,15 +5,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const chat = ref('');
-    return {
-      chat,
-    };
-  },
-};
+const chat = ref('');
 </script>

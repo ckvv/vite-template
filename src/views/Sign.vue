@@ -3,9 +3,10 @@
     <div class="md:p-16 md:shadow">
       <div class="text-center text-4xl">
         vite-element-template
+        {{ user }}
       </div>
       <el-form
-        ref="form"
+        ref="formRef"
         class="my-8"
         :hide-required-asterisk="true"
         label-position="left"
@@ -71,9 +72,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { reactive, ref } from 'vue';
 import { signAPI } from '@/api';
-import { checkRes, checkForm } from '@/utils/helpers';
+import { checkForm } from '@/utils/helpers';
 import { RULES } from '@/utils/rules';
 import { setToken } from '@/utils/util';
 
@@ -82,59 +84,51 @@ const TYPE = {
   signin: 'signin',
 };
 
-export default {
-  setup() {
-    return {
-      RULES,
-      TYPE,
-    };
-  },
-  data() {
-    return {
-      type: TYPE.signin,
-      user: {
-        username: window.localStorage.getItem('username') || '',
-        password: '',
-        checkPassword: '',
+const type = ref(TYPE.signin);
+const formRef = ref();
+
+const toSignUp = () => {
+  type.value = TYPE.signup;
+};
+const toSignIn = () => {
+  type.value = TYPE.signin;
+};
+
+const user = reactive({
+  username: window.localStorage.getItem('username') || '',
+  password: '',
+  checkPassword: '',
+});
+
+const { execute: eSignIn } = signAPI.signIn();
+const { execute: eSignUp } = signAPI.signUp();
+const signIn = async () => {
+  if (await checkForm(formRef.value)) {
+    window.localStorage.setItem('username', user.username);
+    eSignIn({
+      data: {
+        username: user.username,
+        password: user.password,
       },
-    };
-  },
-  methods: {
-    toSignUp() {
-      this.type = TYPE.signup;
-    },
-    toSignIn() {
-      this.type = TYPE.signin;
-    },
-    async signIn() {
-      if (await checkForm.call(this)) {
-        window.localStorage.setItem('username', this.user.username);
-        const res = await signAPI.signIn({
-          username: this.user.username,
-          password: this.user.password,
-        });
-        if (checkRes(res)) {
-          setToken(res.data.data.token);
-          window.location.href = '';
-        } else {
-          this.$error('登录失败');
-        }
-      }
-    },
-    async signUp() {
-      if (await checkForm.call(this)) {
-        const res = await signAPI.signUp({
-          username: this.user.username,
-          password: this.user.password,
-        });
-        if (checkRes(res)) {
-          this.toSignIn();
-        } else {
-          this.$error('注册失败');
-        }
-      }
-    },
-  },
+      success: (data) => {
+        setToken(data.token);
+        window.location.href = '';
+      },
+      error: '登录失败',
+    });
+  }
+};
+const signUp = async () => {
+  if (await checkForm(formRef.value)) {
+    eSignUp({
+      data: {
+        username: user.username,
+        password: user.password,
+      },
+      success: toSignIn,
+      error: '注册失败',
+    });
+  }
 };
 </script>
 

@@ -1,5 +1,8 @@
 <template>
   <div class="hello-world text-center">
+    <button @click="signOut">
+      signOut
+    </button>
     <div>
       Hello: {{ username }}
     </div>
@@ -39,27 +42,15 @@
   </div>
 </template>
 
-<script>
-import { reactive, toRefs } from 'vue';
+<script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { signOut } from '@/utils/helpers';
 import { send, emitter, WS_TYPE } from '@/api/ws';
 
-export default {
-  setup() {
-    const { username } = useRouter().$user;
-    const state = reactive({
-      users: [],
-    });
-    send({ type: WS_TYPE.ALL_USERS });
-    emitter.on(WS_TYPE.ALL_USERS, (data) => { state.users = data; });
+const { username } = useRouter().$user;
+send({ type: WS_TYPE.ALL_USERS });
 
-    const { users } = toRefs(state);
-    return {
-      username,
-      users,
-      signOut,
-    };
-  },
-};
+const users = ref([]);
+emitter.on(WS_TYPE.ALL_USERS, (data) => { users.value = data; });
 </script>
