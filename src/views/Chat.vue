@@ -2,12 +2,6 @@
   <Chatroom />
 </template>
 
-<script>
+<script setup>
 import Chatroom from '@/components/Chatroom.vue';
-
-export default {
-  components: {
-    Chatroom,
-  },
-};
 </script>
