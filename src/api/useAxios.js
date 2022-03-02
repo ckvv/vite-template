@@ -40,17 +40,20 @@ function useAxios(useAxiosConfig, useAxiosOptions, useAxiosInstance = axios) {
       data.value = response.value.data;
 
       if (!checkRes(response.value)) {
-        runErrorHandler(options.error, response);
+        runErrorHandler(options?.error, response);
       } else {
-        runSuccessHandler(options.success, data.value.data);
+        runSuccessHandler(options?.success, data.value.data);
       }
     } catch (err) {
       error.value = err;
-      runErrorHandler(options.error, err);
+      runErrorHandler(options?.error, err);
     } finally {
       isLoading.value = false;
     }
   };
+  if (useAxiosOptions?.immediate) {
+    execute();
+  }
   return {
     response,
     data,

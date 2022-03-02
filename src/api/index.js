@@ -2,17 +2,19 @@ import instance from '@/api/instance';
 import useAxios from '@/api/useAxios';
 
 const sign = {
-  signUp() {
+  signUp(config, options) {
     return useAxios({
       url: '/sign/signup',
       method: 'post',
-    }, {}, instance);
+      ...config,
+    }, options, instance);
   },
-  signIn() {
+  signIn(config, options) {
     return useAxios({
       url: '/sign/signin',
       method: 'put',
-    }, {}, instance);
+      ...config,
+    }, options, instance);
   },
   signOut() {
     return instance.get('/sign/signout');
@@ -24,11 +26,12 @@ const user = {
   info() {
     return instance.get('/user/info');
   },
-  list() {
+  list(config, options) {
     return useAxios({
       url: '/user/list',
       method: 'get',
-    }, {}, instance);
+      ...config,
+    }, options, instance);
   },
 };
 

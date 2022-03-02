@@ -1,6 +1,7 @@
 <template>
   <div class="admin">
     <h1>Admin page</h1>
+    {{ isLoading }}
     <div>{{ users }}</div>
     <router-link to="/">
       Return Home
@@ -11,8 +12,8 @@
 <script setup>
 import { userAPI } from '@/api/index';
 
-const { data: users, execute } = userAPI.list();
-execute({}, {
+const { data: users, isLoading } = userAPI.list({}, {
   error: '获取用户列表失败',
+  immediate: true,
 });
 </script>
