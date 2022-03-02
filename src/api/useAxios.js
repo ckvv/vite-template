@@ -1,8 +1,8 @@
+import axios from 'axios';
 import { ref, shallowRef } from 'vue';
 import { isFunction } from '@/utils/util';
 import { checkRes } from '@/utils/helpers';
 import { error as errorMsg, success as successMsg } from '@/plugins/element-plus';
-import instance from '@/api/instance';
 
 function runErrorHandler(handler, ...args) {
   if (handler) {
@@ -24,29 +24,31 @@ function runSuccessHandler(handler, ...args) {
   }
 }
 
-function useAxios(url, options = {}) {
+function useAxios(useAxiosConfig, useAxiosOptions, useAxiosInstance = axios) {
   const response = shallowRef();
   const data = shallowRef();
   const error = shallowRef();
   const isLoading = ref(false);
 
-  const execute = async (params) => {
-    const defaultParams = { ...options, ...params };
+  const execute = async (executeConfig, executeOptions, executeInstance) => {
+    const config = { ...useAxiosConfig, ...executeConfig };
+    const options = { ...useAxiosOptions, ...executeOptions };
+    const instance = executeInstance || useAxiosInstance;
     try {
       isLoading.value = true;
-      response.value = await instance(url, defaultParams);
+      response.value = await instance(config);
       data.value = response.value.data;
-      isLoading.value = false;
 
       if (!checkRes(response.value)) {
-        runErrorHandler(defaultParams.error, 'he');
+        runErrorHandler(options.error, response);
       } else {
-        runSuccessHandler(defaultParams.success, data.value.data);
+        runSuccessHandler(options.success, data.value.data);
       }
     } catch (err) {
-      console.log(err);
       error.value = err;
-      runErrorHandler(defaultParams.error, err);
+      runErrorHandler(options.error, err);
+    } finally {
+      isLoading.value = false;
     }
   };
   return {
@@ -58,6 +60,6 @@ function useAxios(url, options = {}) {
   };
 }
 ['get', 'post', 'put', 'delete'].forEach((method) => {
-  useAxios[method] = (url, params, options) => useAxios(url, { ...params, method }, options);
+  useAxios[method] = (params, instance) => useAxios({ ...params, method }, instance);
 });
 export default useAxios;

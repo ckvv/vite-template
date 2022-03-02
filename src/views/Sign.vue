@@ -100,16 +100,18 @@ const user = reactive({
   checkPassword: '',
 });
 
-const { execute: eSignIn } = signAPI.signIn();
-const { execute: eSignUp } = signAPI.signUp();
+const { execute: doSignIn } = signAPI.signIn();
+const { execute: doSignUp } = signAPI.signUp();
+
 const signIn = async () => {
   if (await checkForm(formRef.value)) {
     window.localStorage.setItem('username', user.username);
-    eSignIn({
+    doSignIn({
       data: {
         username: user.username,
         password: user.password,
       },
+    }, {
       success: (data) => {
         setToken(data.token);
         window.location.href = '';
@@ -120,11 +122,12 @@ const signIn = async () => {
 };
 const signUp = async () => {
   if (await checkForm(formRef.value)) {
-    eSignUp({
+    doSignUp({
       data: {
         username: user.username,
         password: user.password,
       },
+    }, {
       success: toSignIn,
       error: '注册失败',
     });

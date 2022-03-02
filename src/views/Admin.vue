@@ -11,8 +11,8 @@
 <script setup>
 import { userAPI } from '@/api/index';
 
-const { data: users, execute } = userAPI.list(undefined, {
+const { data: users, execute } = userAPI.list();
+execute({}, {
   error: '获取用户列表失败',
 });
-execute();
 </script>

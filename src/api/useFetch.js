@@ -1,6 +1,27 @@
 import { ref, shallowRef } from 'vue';
 import { getToken, isFunction } from '@/utils/util';
+import { checkRes } from '@/utils/helpers';
 import { error as errorMsg, success as successMsg } from '@/plugins/element-plus';
+
+function runErrorHandler(handler, ...args) {
+  if (handler) {
+    if (isFunction(handler)) {
+      handler(...args);
+    } else {
+      errorMsg(handler);
+    }
+  }
+}
+
+function runSuccessHandler(handler, ...args) {
+  if (handler) {
+    if (isFunction(handler)) {
+      handler(...args);
+    } else {
+      successMsg(handler);
+    }
+  }
+}
 
 function useFetch(url, options = {}) {
   const response = shallowRef();
@@ -17,23 +38,16 @@ function useFetch(url, options = {}) {
       isLoading.value = true;
       response.value = await fetch(url, options);
       data.value = await response.value[options.type || 'json']();
-      isLoading.value = false;
-      if (options.success) {
-        if (isFunction(options.success)) {
-          options.success(response);
-        } else {
-          successMsg(options.success);
-        }
+      if (!checkRes(response.value)) {
+        runErrorHandler(options.error, response);
+      } else {
+        runSuccessHandler(options.success, data.value.data);
       }
     } catch (err) {
       error.value = err;
-      if (options.error) {
-        if (isFunction(options.error)) {
-          options.error(err);
-        } else {
-          errorMsg(options.error);
-        }
-      }
+      runErrorHandler(options.error, err);
+    } finally {
+      isLoading.value = false;
     }
   };
   return {
