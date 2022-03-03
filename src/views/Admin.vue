@@ -12,7 +12,7 @@
 <script setup>
 import { userAPI } from '@/api/index';
 
-const { data: users, isLoading } = userAPI.list({}, {
+const { data: users } = userAPI.list({}, {
   error: '获取用户列表失败',
   immediate: true,
 });

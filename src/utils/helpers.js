@@ -1,10 +1,5 @@
+import { nextTick } from 'vue';
 import { close } from '@/api/ws';
-
-function validateRefs(refs) {
-  refs = refs || Object.keys(this.$refs);
-  const errors = refs.filter((ref) => this.$refs[ref] && 'validate' in this.$refs[ref] && typeof this.$refs[ref].validate === 'function').map((ref) => this.$refs[ref].validate()).filter((val) => !!val);
-  return errors.length ? errors : null;
-}
 
 async function checkForm(form) {
   return new Promise((res) => {
@@ -15,7 +10,7 @@ async function checkForm(form) {
 }
 
 function resetForm(form) {
-  this.$nextTick(() => {
+  nextTick(() => {
     form.resetFields();
   });
 }
@@ -31,7 +26,6 @@ function signOut(href = '') {
 }
 
 export {
-  validateRefs,
   checkRes,
   checkForm,
   resetForm,

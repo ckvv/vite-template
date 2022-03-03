@@ -2,14 +2,14 @@ import axios from 'axios';
 import { ref, shallowRef } from 'vue';
 import { isFunction } from '@/utils/util';
 import { checkRes } from '@/utils/helpers';
-import { error as errorMsg, success as successMsg } from '@/plugins/element-plus';
+import { notify } from '@/plugins/element-plus';
 
 function runErrorHandler(handler, ...args) {
   if (handler) {
     if (isFunction(handler)) {
       handler(...args);
     } else {
-      errorMsg(handler);
+      notify.error(handler);
     }
   }
 }
@@ -19,7 +19,7 @@ function runSuccessHandler(handler, ...args) {
     if (isFunction(handler)) {
       handler(...args);
     } else {
-      successMsg(handler);
+      notify.success(handler);
     }
   }
 }

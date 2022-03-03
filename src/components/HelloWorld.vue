@@ -43,14 +43,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { signOut } from '@/utils/helpers';
 import { send, emitter, WS_TYPE } from '@/api/ws';
 
 const { username } = useRouter().$user;
-send({ type: WS_TYPE.ALL_USERS });
-
 const users = ref([]);
-emitter.on(WS_TYPE.ALL_USERS, (data) => { users.value = data; });
+
+onMounted(() => {
+  send({ type: WS_TYPE.ALL_USERS });
+  emitter.on(WS_TYPE.ALLUSERS, (data) => { users.value = data; });
+});
 </script>

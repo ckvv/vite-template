@@ -79,6 +79,9 @@ import { checkForm } from '@/utils/helpers';
 import { RULES } from '@/utils/rules';
 import { setToken } from '@/utils/util';
 
+const { execute: doSignIn } = signAPI.signIn();
+const { execute: doSignUp } = signAPI.signUp();
+
 const TYPE = {
   signup: 'signup',
   signin: 'signin',
@@ -99,9 +102,6 @@ const user = reactive({
   password: '',
   checkPassword: '',
 });
-
-const { execute: doSignIn } = signAPI.signIn();
-const { execute: doSignUp } = signAPI.signUp();
 
 const signIn = async () => {
   if (await checkForm(formRef.value)) {
