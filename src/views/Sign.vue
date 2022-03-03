@@ -76,7 +76,7 @@ import { signAPI } from '@/api';
 import { checkRes, checkForm } from '@/utils/helpers';
 import { RULES } from '@/utils/rules';
 import { setToken } from '@/utils/util';
-import { error } from '@/plugins/element-plus';
+import { notify } from '@/plugins/element-plus';
 import { ref } from 'vue';
 
 const TYPE = {
@@ -111,7 +111,7 @@ async function signIn() {
       setToken(res.data.data.token);
       window.location.href = '';
     } else {
-      error('登录失败');
+      notify.error('登录失败');
     }
   }
 }
@@ -125,7 +125,7 @@ async function signUp() {
     if (checkRes(res)) {
       toSignIn();
     } else {
-      error('注册失败');
+      notify.error('注册失败');
     }
   }
 }

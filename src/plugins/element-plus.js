@@ -13,22 +13,23 @@ const components = [
   ElForm,
 ];
 
-function notify(type, message, options) {
+function elNotify(type, message, options) {
   return ElNotification({
     type,
     message,
     ...options,
   });
 }
+const success = (message, options) => elNotify('success', message, options);
+const error = (message, options) => elNotify('error', message, options);
 
-export const success = (message, options) => notify('success', message, options);
-export const error = (message, options) => notify('error', message, options);
+export const notify = {
+  success,
+  error,
+};
 
 export default {
   install(app) {
-    app.config.globalProperties.$success = success;
-    app.config.globalProperties.$error = error;
-
     app.use(makeInstaller(components), {
       size: 'default',
     });

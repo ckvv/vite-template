@@ -12,7 +12,7 @@
 import { onMounted, ref } from 'vue';
 import { userAPI } from '@/api';
 import { checkRes } from '@/utils/helpers';
-import { error } from '@/plugins/element-plus';
+import { notify } from '@/plugins/element-plus';
 
 const users = ref([]);
 async function getUserList() {
@@ -20,7 +20,7 @@ async function getUserList() {
   if (checkRes(res)) {
     return res.data.data;
   }
-  error('获取用户列表失败');
+  notify.error('获取用户列表失败');
   return null;
 }
 onMounted(async () => {
