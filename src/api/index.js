@@ -16,15 +16,23 @@ const sign = {
       ...config,
     }, options, instance);
   },
-  signOut() {
-    return instance.get('/sign/signout');
+  signOut(config, options) {
+    return useAxios({
+      url: '/sign/signout',
+      method: 'get',
+      ...config,
+    }, options, instance);
   },
 
 };
 
 const user = {
-  info() {
-    return instance.get('/user/info');
+  info(config, options) {
+    return useAxios({
+      url: '/user/info',
+      method: 'get',
+      ...config,
+    }, options, instance);
   },
   list(config, options) {
     return useAxios({
@@ -35,14 +43,7 @@ const user = {
   },
 };
 
-const log = {
-  list(params) {
-    return instance.get('/log/list', { params });
-  },
-};
-
 export {
   sign as signAPI,
   user as userAPI,
-  log as logAPI,
 };

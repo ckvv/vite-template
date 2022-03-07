@@ -37,13 +37,12 @@ function useAxios(useAxiosConfig, useAxiosOptions, useAxiosInstance = axios) {
     try {
       isLoading.value = true;
       response.value = await instance(config);
-      data.value = response.value.data;
 
       if (!checkRes(response.value)) {
-        runErrorHandler(options?.error, response);
-      } else {
-        runSuccessHandler(options?.success, data.value.data);
+        throw (response.value.data);
       }
+      data.value = response.value.data.data;
+      runSuccessHandler(options?.success, data.value);
     } catch (err) {
       error.value = err;
       runErrorHandler(options?.error, err);
