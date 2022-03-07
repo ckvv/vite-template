@@ -21,7 +21,9 @@
         Admin
       </router-link>页面,如果是普通用户会被跳转到登录页面
     </div>
-
+    <div @click="signOut">
+      退出
+    </div>
     <div>
       <a
         href="https://vitejs.dev/guide/features.html"
@@ -39,27 +41,17 @@
   </div>
 </template>
 
-<script>
-import { reactive, toRefs } from 'vue';
+<script setup>
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { signOut } from '@/utils/helpers';
 import { send, emitter, WS_TYPE } from '@/api/ws';
 
-export default {
-  setup() {
-    const { username } = useRouter().$user;
-    const state = reactive({
-      users: [],
-    });
-    send({ type: WS_TYPE.ALL_USERS });
-    emitter.on(WS_TYPE.ALL_USERS, (data) => { state.users = data; });
+const { username } = useRouter().$user;
+const users = ref([]);
 
-    const { users } = toRefs(state);
-    return {
-      username,
-      users,
-      signOut,
-    };
-  },
-};
+onMounted(() => {
+  send({ type: WS_TYPE.ALL_USERS });
+  emitter.on(WS_TYPE.ALL_USERS, (data) => { users.value = data; });
+});
 </script>

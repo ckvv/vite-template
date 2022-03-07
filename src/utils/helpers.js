@@ -1,22 +1,17 @@
+import { unref, nextTick } from 'vue';
 import { close } from '@/api/ws';
 
-function validateRefs(refs) {
-  refs = refs || Object.keys(this.$refs);
-  const errors = refs.filter((ref) => this.$refs[ref] && 'validate' in this.$refs[ref] && typeof this.$refs[ref].validate === 'function').map((ref) => this.$refs[ref].validate()).filter((val) => !!val);
-  return errors.length ? errors : null;
-}
-
-async function checkForm(form = 'form') {
+async function checkForm(form) {
   return new Promise((res) => {
-    this.$refs[form].validate((valid) => {
+    unref(form).validate((valid) => {
       res(valid);
     });
   });
 }
 
-function resetForm(form = 'form') {
-  this.$nextTick(() => {
-    this.$refs[form].resetFields();
+function resetForm(form) {
+  nextTick(() => {
+    unref(form).resetFields();
   });
 }
 
@@ -31,7 +26,6 @@ function signOut(href = '') {
 }
 
 export {
-  validateRefs,
   checkRes,
   checkForm,
   resetForm,

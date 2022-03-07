@@ -5,7 +5,7 @@
         vite-element-template
       </div>
       <el-form
-        ref="form"
+        ref="formRef"
         class="my-8"
         :hide-required-asterisk="true"
         label-position="left"
@@ -71,71 +71,65 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { signAPI } from '@/api';
 import { checkRes, checkForm } from '@/utils/helpers';
 import { RULES } from '@/utils/rules';
 import { setToken } from '@/utils/util';
+import { notify } from '@/plugins/element-plus';
+import { ref } from 'vue';
 
 const TYPE = {
   signup: 'signup',
   signin: 'signin',
 };
 
-export default {
-  setup() {
-    return {
-      RULES,
-      TYPE,
-    };
-  },
-  data() {
-    return {
-      type: TYPE.signin,
-      user: {
-        username: window.localStorage.getItem('username') || '',
-        password: '',
-        checkPassword: '',
-      },
-    };
-  },
-  methods: {
-    toSignUp() {
-      this.type = TYPE.signup;
-    },
-    toSignIn() {
-      this.type = TYPE.signin;
-    },
-    async signIn() {
-      if (await checkForm.call(this)) {
-        window.localStorage.setItem('username', this.user.username);
-        const res = await signAPI.signIn({
-          username: this.user.username,
-          password: this.user.password,
-        });
-        if (checkRes(res)) {
-          setToken(res.data.data.token);
-          window.location.href = '';
-        } else {
-          this.$error('登录失败');
-        }
-      }
-    },
-    async signUp() {
-      if (await checkForm.call(this)) {
-        const res = await signAPI.signUp({
-          username: this.user.username,
-          password: this.user.password,
-        });
-        if (checkRes(res)) {
-          this.toSignIn();
-        } else {
-          this.$error('注册失败');
-        }
-      }
-    },
-  },
-};
+const formRef = ref();
+const type = ref(TYPE.signin);
+const user = ref({
+  username: window.localStorage.getItem('username') || '',
+  password: '',
+  checkPassword: '',
+});
+
+function toSignUp() {
+  type.value = TYPE.signup;
+}
+
+function toSignIn() {
+  type.value = TYPE.signin;
+}
+
+async function signIn() {
+  if (await checkForm(formRef)) {
+    window.localStorage.setItem('username', user.value.username);
+    const res = await signAPI.signIn({
+      username: user.value.username,
+      password: user.value.password,
+    });
+    if (checkRes(res)) {
+      setToken(res.data.data.token);
+      window.location.href = '';
+    } else {
+      notify.error('登录失败');
+    }
+  }
+}
+
+async function signUp() {
+  if (await checkForm(formRef)) {
+    const res = await signAPI.signUp({
+      username: user.value.username,
+      password: user.value.password,
+    });
+    if (checkRes(res)) {
+      toSignIn();
+    } else {
+      notify.error('注册失败');
+    }
+  }
+}
+
 </script>
 
 <style scoped>

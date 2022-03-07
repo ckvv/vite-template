@@ -4,13 +4,6 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import HelloWorld from '@/components/HelloWorld.vue';
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld,
-  },
-};
 </script>
