@@ -1,5 +1,5 @@
 import { ref, shallowRef } from 'vue';
-import { getToken, isFunction } from '@/utils/util';
+import { isFunction } from '@/utils/util';
 import { checkRes } from '@/utils/helpers';
 import { notify } from '@/plugins/element-plus';
 
@@ -23,21 +23,20 @@ function runSuccessHandler(handler, ...args) {
   }
 }
 
-function useFetch(url, options = {}) {
+function useFetch(useFetchInput, useFetchInit = {}, useFetchOptions = {}) {
   const response = shallowRef();
   const data = shallowRef();
   const error = shallowRef();
   const isLoading = ref(false);
 
-  options.headers = {
-    ...options.headers,
-    token: getToken(),
-  };
-  const execute = async () => {
+  const execute = async (fetchInit, fetchOptions) => {
+    const input = useFetchInput;
+    const init = { ...useFetchInit, ...fetchInit };
+    const options = { ...useFetchOptions, ...fetchOptions };
     try {
       isLoading.value = true;
-      response.value = await fetch(url, options);
-      data.value = await response.value[options.type || 'json']();
+      response.value = await fetch(input, init);
+      data.value = await response.value[fetchInit.type || 'json']();
       if (!checkRes(response.value)) {
         runErrorHandler(options.error, response);
       } else {
