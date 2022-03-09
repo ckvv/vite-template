@@ -76,8 +76,8 @@ import { signAPI } from '@/api';
 import { checkRes, checkForm } from '@/utils/helpers';
 import { RULES } from '@/utils/rules';
 import { setToken } from '@/utils/util';
-import { notify } from '@/plugins/element-plus';
 import { ref } from 'vue';
+import { notify } from '@/utils';
 
 const TYPE = {
   signup: 'signup',

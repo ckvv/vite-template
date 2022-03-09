@@ -4,8 +4,27 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import WindiCSS from 'vite-plugin-windicss';
 import { visualizer } from 'rollup-plugin-visualizer';
+import Components from 'unplugin-vue-components/vite';
+import {
+  ArcoResolver,
+  TDesignResolver,
+  NaiveUiResolver,
+  ElementPlusResolver,
+} from 'unplugin-vue-components/resolvers';
 
-const plugins = [WindiCSS(), vue()];
+const UI = Components({
+  dts: true,
+  resolvers: [
+    ArcoResolver(),
+    TDesignResolver({
+      library: 'vue-next',
+    }),
+    NaiveUiResolver(),
+    ElementPlusResolver(),
+  ],
+});
+
+const plugins = [WindiCSS(), vue(), UI];
 const rootPath = path.resolve();
 if (process.env.visualizer) {
   const visualizerPlugin = visualizer({

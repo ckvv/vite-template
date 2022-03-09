@@ -12,7 +12,7 @@
 import { onMounted, ref } from 'vue';
 import { userAPI } from '@/api';
 import { checkRes } from '@/utils/helpers';
-import { notify } from '@/plugins/element-plus';
+import { notify } from '@/utils';
 
 const users = ref([]);
 async function getUserList() {

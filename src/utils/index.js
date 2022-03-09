@@ -1,17 +1,5 @@
-import {
-  ElButton,
-  ElInput,
-  ElForm,
-  ElNotification,
-  makeInstaller,
-} from 'element-plus';
-import 'element-plus/dist/index.css';
-
-const components = [
-  ElButton,
-  ElInput,
-  ElForm,
-];
+import mitt from 'mitt';
+import { ElNotification } from 'element-plus';
 
 function elNotify(type, message, options) {
   return ElNotification({
@@ -23,15 +11,8 @@ function elNotify(type, message, options) {
 const success = (message, options) => elNotify('success', message, options);
 const error = (message, options) => elNotify('error', message, options);
 
+export const bus = mitt();
 export const notify = {
   success,
   error,
-};
-
-export default {
-  install(app) {
-    app.use(makeInstaller(components), {
-      size: 'large',
-    });
-  },
 };

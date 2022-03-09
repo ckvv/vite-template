@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "@/*": ["src/*"]
     },
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "components.d.ts"],
   "exclude": ["node_modules", "dist", "public", "report"]
 }
